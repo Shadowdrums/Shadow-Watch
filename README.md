@@ -1,7 +1,7 @@
 # Shadow-Watch
 Security tool to monitor your resource usage and network for suspicious activity
 
-#### Shaodw-Watch
+#### Shaodow-Watch
 
 this program was made for educational purposes to monitor your network for suspiscious activity
 and watch rescource usage on your device. you will need 'psutil'
