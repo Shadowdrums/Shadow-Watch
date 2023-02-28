@@ -19,7 +19,7 @@ After the desired script has been run, the program clears the terminal screen to
 
 #### MonitorStation: this is your terminal to run the program
 
-This program is a Python script that allows the user to run multiple monitoring scripts on their computer. The scripts included are "Sniffer.py", "Resource-Monitor.py", "process-watcher.py", and "temp-watcher.py".
+This program is a Python script that allows the user to run multiple monitoring scripts on their computer. The scripts included are "Sniffer.py", "Resource-Monitor.py", "process-watcher.py", and "temp-watcher.py" and "User-Watcher.py".
 
 The program first prompts the user for a password to ensure that unauthorized users cannot run the monitoring scripts. The user has three attempts to enter the correct password before the program stops prompting and instead runs a separate script called "loadbar.py".
 
