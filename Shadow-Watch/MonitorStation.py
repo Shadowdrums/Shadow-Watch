@@ -3,13 +3,10 @@ import os
 import getpass
 import base64
 
-# Get the current directory
 current_directory = os.getcwd()
 
-# Define the number of password attempts allowed
 max_attempts = 3
 
-# Define a function to get the credentials
 def get_credentials():
     credentials_file = "credentials.txt"
     if os.path.isfile(credentials_file):
@@ -29,13 +26,10 @@ def get_credentials():
             f.write(encoded_credentials)
         return username, password
 
-# Get the username and password
 username, password = get_credentials()
 
-# Define a variable to track the number of attempts
 num_attempts = 0
 
-# Define a function to prompt for the password and return True if it's correct
 def check_password():
     global num_attempts
     pw = getpass.getpass("Enter the password to start the scripts: ")
@@ -51,20 +45,28 @@ def check_password():
             print("Incorrect password. Please try again.")
             return False
 
-# Prompt for the password
 while not check_password():
     pass
 
-# Define a list of the scripts to run
 scripts = ['Sniffer.py', 'Rescource-Monitor.py', 'process-watcher.py', 'temp-watcher.py']
 
-# Run the scripts one by one in separate windows
 if num_attempts != max_attempts:
-    for script in scripts:
-        script_path = os.path.join(current_directory, script)
-        if os.path.exists(script_path):
-            subprocess.Popen(f"start cmd /c python \"{os.path.join(current_directory, script)}\"", shell=True)
+    while True:
+        print("Select a script to run:")
+        for i, script in enumerate(scripts):
+            print(f"{i+1}. {script}")
+        choice = input("Enter the number of the script to run (or 'q' to quit): ")
+        if choice == 'q':
+            break
+        elif choice.isdigit() and int(choice) in range(1, len(scripts)+1):
+            script_path = os.path.join(current_directory, scripts[int(choice)-1])
+            if os.path.exists(script_path):
+                subprocess.Popen(f"start cmd /c python \"{script_path}\"", shell=True)
+                input("Press Enter to continue...")
+                os.system('cls' if os.name=='nt' else 'clear')
+            else:
+                print(f"Error: Could not find script {script_path}")
         else:
-            print(f"Error: Could not find script {script_path}")
+            print("Invalid choice. Please try again.")
 
 print("All scripts have been started.")

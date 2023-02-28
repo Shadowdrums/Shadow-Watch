@@ -23,7 +23,7 @@ def generate_load_bar(percent, length):
     Generates a load bar string with a solid fill based on the given percentage and length.
     """
     fill_length = int(percent / 100 * length)
-    return f"[{'=' * fill_length}{' ' * (length - fill_length)}]"
+    return f"[{'█' * fill_length}{' ' * (length - fill_length)}]"
 
 while True:
     cpu_percent = psutil.cpu_percent(interval=3)
