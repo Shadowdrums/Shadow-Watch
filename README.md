@@ -63,5 +63,11 @@ Next, the program enters an infinite loop that repeatedly waits for 5 seconds an
 
 Finally, the program prints out any new files that were added or files that were deleted since the last check. It also updates the initial list of files with the current list so that it can correctly identify any new changes during the next iteration of the loop.
 
+#### User-Watcher:
+
+This is a Python program that monitors certain aspects of a user's computer and logs any changes to a log file. The program first gets the current username, creates a log file, and creates a snapshot of the data being monitored in a file named "UserData.txt" using base64 encoding. The monitored data includes the user's permissions, the list of processes running in the background, and the list of files in the user's home directory.
+
+The program then enters an infinite loop, checking for any changes in the monitored data every 60 seconds. If there are any changes, the program logs the time of the change in the log file and prints a message to the console indicating the type of change detected. The program stops monitoring if the user presses Ctrl+C, which raises a KeyboardInterrupt exception, and prints a message to the console indicating that monitoring has stopped.
+
 #### Advisment:
 This program was created for educationl purposes and for security reasons. DO NOT USE on any device you do not own or have pre documented aproval to use this on.
