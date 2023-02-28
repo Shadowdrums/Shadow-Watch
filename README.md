@@ -4,7 +4,17 @@ Security tool to monitor your resource usage and network for suspicious activity
 #### Shadow-Watch
 
 this program was made for educational purposes to monitor your network for suspiscious activity
-and watch rescource usage on your device. you will need 'psutil'
+and watch rescource usage on your device. you will need 'psutil' and 'scapy'
+
+#### Summary:
+
+This program is a Python script that allows the user to run multiple monitoring scripts on their computer. The scripts included are "Sniffer.py", "Resource-Monitor.py", "process-watcher.py", and "temp-watcher.py".
+
+The program first prompts the user for a password to ensure that unauthorized users cannot run the monitoring scripts. The user has three attempts to enter the correct password before the program stops prompting and instead runs a separate script called "loadbar.py".
+
+Once the user has entered the correct password, the program starts a loop that displays a menu of options to the user. The user can select which script they want to run by typing the number associated with the script. Once the user selects a script, the program uses the subprocess module to run the selected script in a new window.
+
+After the desired script has been run, the program clears the terminal screen to prevent excessive terminal spam. The program then displays the menu of options again, allowing the user to select another script to run if they wish.
 
 
 #### MonitorStation: this is your terminal to run the program
