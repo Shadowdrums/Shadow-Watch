@@ -56,7 +56,7 @@ while not check_password():
     pass
 
 # Define a list of the scripts to run
-scripts = ['Sniffer.py', 'Rescource-Monitor.py', 'Rescource-Graph.py']
+scripts = ['Sniffer.py', 'Rescource-Monitor.py', 'process-watcher.py', 'temp-watcher.py']
 
 # Run the scripts one by one in separate windows
 if num_attempts != max_attempts:

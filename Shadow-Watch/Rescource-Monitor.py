@@ -18,12 +18,19 @@ def ping(host):
             return time_ms
     return None
 
+def generate_load_bar(percent, length):
+    """
+    Generates a load bar string with a solid fill based on the given percentage and length.
+    """
+    fill_length = int(percent / 100 * length)
+    return f"[{'=' * fill_length}{' ' * (length - fill_length)}]"
+
 while True:
     cpu_percent = psutil.cpu_percent(interval=3)
 
     # Check if cpu_percent is None before formatting it as a string
     if cpu_percent is not None:
-        cpu_usage_str = f"CPU Usage: {cpu_percent}% |\n"
+        cpu_usage_str = f"CPU Usage: {cpu_percent}% {generate_load_bar(cpu_percent, 20)} |\n"
     else:
         cpu_usage_str = "CPU Usage: Unknown |\n"
 
@@ -68,12 +75,15 @@ while True:
         power_percent = "Unknown"
         power_time = "Unknown"
 
-    # Use the formatted cpu_usage_str variable in the print statement
     print(f"{cpu_usage_str}"
-          f"Memory Usage: {mem_percent}% ({mem_used:.2f} MB / {mem_total:.2f} MB) |\n"
-          f"HDD Usage: {hdd_percent}% |\n"
-          f"SSD Usage: {ssd_percent}% |\n"
-          f"CPU Temperature: {temp} |\n"
-          f"Power Status: {power_status} |\n"
-          f"Battery Percentage: {power_percent}% |\n"
-          f"Time Left: {power_time} seconds\n")
+      f"Memory Usage: {mem_percent}% {generate_load_bar(mem_percent, 20)} ({mem_used:.2f} MB / {mem_total:.2f} MB)\n"
+      f"HDD Usage: {hdd_percent}% {generate_load_bar(hdd_percent, 20)}\n"
+      f"SSD Usage: {ssd_percent}% {generate_load_bar(ssd_percent, 20)}\n"
+      f"CPU Temperature: {temp} °F\n"
+      f"Power Status: {power_status}\n"
+      f"Battery Percentage: {power_percent}% {generate_load_bar(power_percent, 20)}\n"
+      f"Time Left: {power_time} seconds\n")
+time.sleep(0.1)  # wait for 0.1 seconds before printing the next set of stats.
+
+
+
