@@ -19,19 +19,13 @@ After the desired script has been run, the program clears the terminal screen to
 
 #### MonitorStation: this is your terminal to run the program
 
-This is a Python script that runs a set of other Python scripts in separate command prompt windows. Before running the scripts, the program prompts the user to enter a password. The program then checks the entered password against a stored password, and if the password is correct, it runs the set of scripts one by one.
+This program is a Python script that allows the user to run multiple monitoring scripts on their computer. The scripts included are "Sniffer.py", "Resource-Monitor.py", "process-watcher.py", and "temp-watcher.py".
 
-The program first gets the current directory using the os.getcwd() function. It then defines the number of password attempts allowed as max_attempts = 3.
+The program first prompts the user for a password to ensure that unauthorized users cannot run the monitoring scripts. The user has three attempts to enter the correct password before the program stops prompting and instead runs a separate script called "loadbar.py".
 
-Next, the program defines a function get_credentials() that checks if a file named "credentials.txt" exists in the current directory. If the file exists, it reads the encoded credentials from the file, decodes them, and returns the username and password. If the file does not exist, it prompts the user to enter a username and password, encodes them, and saves them in the "credentials.txt" file. The function returns the username and password.
+Once the user has entered the correct password, the program starts a loop that displays a menu of options to the user. The user can select which script they want to run by typing the number associated with the script. Once the user selects a script, the program uses the subprocess module to run the selected script in a new window.
 
-The program then calls the get_credentials() function to get the username and password. It defines a variable num_attempts to track the number of password attempts, and a function check_password() to prompt for the password and check if it's correct. The check_password() function compares the entered password against the stored password. If the entered password is correct, the function returns True. If the entered password is incorrect, the function increments num_attempts, and if num_attempts reaches max_attempts, the function prints an error message and starts the loadbar.py script using the subprocess.Popen() function. If the entered password is incorrect but num_attempts has not reached max_attempts, the function prints a message asking the user to try again, and returns False.
-
-The program then enters a loop that repeatedly calls the check_password() function until the function returns True.
-
-If the password is correct, the program defines a list scripts that contains the names of the scripts to run. The program then loops through the list of scripts, and for each script, it checks if the script file exists in the current directory. If the file exists, the program starts a new command prompt window using the subprocess.Popen() function and runs the script in the new window. If the file does not exist, the program prints an error message.
-
-After running all the scripts, the program prints a message indicating that all the scripts have been started.
+After the desired script has been run, the program clears the terminal screen to prevent excessive terminal spam. The program then displays the menu of options again, allowing the user to select another script to run if they wish.
 
 #### Sniffer:
 
