@@ -48,7 +48,7 @@ def check_password():
 while not check_password():
     pass
 
-scripts = ['Sniffer.py', 'Rescource-Monitor.py', 'process-watcher.py', 'temp-watcher.py']
+scripts = ['Sniffer.py', 'Rescource-Monitor.py', 'process-watcher.py', 'temp-watcher.py', 'User-Watcher.py']
 
 if num_attempts != max_attempts:
     while True:
